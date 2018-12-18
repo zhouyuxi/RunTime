@@ -47,17 +47,36 @@
     [super viewDidLoad];
 //    [self testURL];
     
-//    [self testDongtaijiazaiMethod];
-    [self testKVO];
+//   [self testDongtaijiazaiMethod];
+//   [self testKVO];
+    
+    [self invocationTest];
+    
+
+}
+
+- (void)invocationTest{
+    Person *p = [[Person alloc] init];
+    NSMethodSignature *sign = [p methodSignatureForSelector:@selector(testInvocation:)];
+    NSInvocation *aInvocation = [NSInvocation invocationWithMethodSignature:sign];
+    [aInvocation setTarget:p];
+    [aInvocation setSelector:@selector(testInvocation:)];
+    NSString *str = @"hello";
+    [aInvocation setArgument:&str atIndex:2];
+    [aInvocation invoke];
 }
 
 
 // 动态添加方法（懒加载方法）
 - (void)testDongtaijiazaiMethod
 {
-    Person *p = [[Person alloc] init];
-    [p performSelector:@selector(eat:) withObject:@"汉堡"];
+//     Person *p = [[Person alloc] init];
+//    [p performSelector:@selector(eat:) withObject:@"汉堡"];
 //     objc_msgSend(p, @selector(eat),@"汉堡");
+//     [p performSelector:@selector(sendMessage:) withObject:@"汉堡"];
+    
+    [Person testMethod];
+    
 }
 
 - (void)testKVO

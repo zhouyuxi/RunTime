@@ -15,5 +15,9 @@
 
 - (void)run;
 
+- (void)sendMessage:(NSString *)msg;
++ (void)testMethod;
+-(void)testInvocation:(NSString *)str;
+
 
 @end
